@@ -22,6 +22,9 @@ function displayOutputData(text){
 
 btn.addEventListener('click', () => {
     let inputData = enterInput.value;
+    if (inputData === ""){
+        return
+    } else {
     enterInput.value = "";
     displayInputData(inputData);
 
@@ -33,10 +36,11 @@ btn.addEventListener('click', () => {
     }
 
     socket.onmessage = (e) => {
-        displayOutputData(`server's response: ${e.data}`);
+        displayOutputData(`<span style="font-weight: 600;">server's response:</span> ${e.data}`);
     }
 
     socket.onerror = (e) => server.innerHTML = `en error occured`;
+    }
 })
 
 const error = () => {
@@ -46,7 +50,7 @@ const error = () => {
 const success = async (position) => {
     const latitude  = position.coords.latitude;
     const longitude = position.coords.longitude;
-    displayOutputData(`Check your position <a target="_blank" href="https://www.openstreetmap.org/#map=18/${latitude}/${longitude}">here</a>`)
+    displayOutputData(`Check your position <a target="_blank" href="https://www.openstreetmap.org/#map=18/${latitude}/${longitude}"><strong>here</strong></a>`)
 
     if (latitude && longitude) {
         anima.style.display = 'none';

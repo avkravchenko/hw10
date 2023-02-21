@@ -16,6 +16,7 @@
     }
     
     .chat-window {
+        overflow: scroll;
         border-radius: 20px;
         margin: 20px;
         height: 90vh;
